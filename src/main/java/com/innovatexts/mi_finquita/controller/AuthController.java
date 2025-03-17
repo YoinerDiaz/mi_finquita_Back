@@ -6,6 +6,7 @@ import com.innovatexts.mi_finquita.model.Usuario;
 import com.innovatexts.mi_finquita.security.JwtTokenProvider;
 import com.innovatexts.mi_finquita.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -67,4 +68,15 @@ public class AuthController {
                 usuario.getRol().getNombre()
         ));
     }
+    @GetMapping("/validate")
+    public ResponseEntity<?> validateToken(@RequestHeader("Authorization") String authHeader) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            if (jwtTokenProvider.validateToken(token)) {
+                return ResponseEntity.ok("Token válido");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token inválido o expirado");
+    }
+
 }
