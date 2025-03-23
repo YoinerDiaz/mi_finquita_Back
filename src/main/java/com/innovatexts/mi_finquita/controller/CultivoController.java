@@ -1,17 +1,13 @@
 package com.innovatexts.mi_finquita.controller;
 
 import com.innovatexts.mi_finquita.dto.CultivoDTO;
-import com.innovatexts.mi_finquita.dto.TrabajoDTO;
 import com.innovatexts.mi_finquita.model.Cultivo;
-import com.innovatexts.mi_finquita.model.Trabajo;
-import com.innovatexts.mi_finquita.model.Usuario;
 import com.innovatexts.mi_finquita.service.CultivoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
