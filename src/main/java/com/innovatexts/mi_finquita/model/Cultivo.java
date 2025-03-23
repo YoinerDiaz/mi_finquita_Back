@@ -2,8 +2,7 @@ package com.innovatexts.mi_finquita.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -28,14 +27,14 @@ public class Cultivo {
 
     @Column(name = "fecha_siembra", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate fechaSiembra;
+    private Date fechaSiembra;
 
     @Column(name = "fecha_cosecha", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate fechaCosecha;
+    private Date fechaCosecha;
 
     @Column(name = "area_hectareas", columnDefinition = "DECIMAL(38,2)", nullable = false)
-    private BigDecimal areaHectareas;
+    private float areaHectareas;
 
     @Column(length = 255, nullable = false)
     private String ubicacion;
@@ -87,27 +86,27 @@ public class Cultivo {
         this.variedad = variedad;
     }
 
-    public LocalDate getFechaSiembra() {
+    public Date getFechaSiembra() {
         return fechaSiembra;
     }
 
-    public void setFechaSiembra(LocalDate fechaSiembra) {
+    public void setFechaSiembra(Date fechaSiembra) {
         this.fechaSiembra = fechaSiembra;
     }
 
-    public LocalDate getFechaCosecha() {
+    public Date getFechaCosecha() {
         return fechaCosecha;
     }
 
-    public void setFechaCosecha(LocalDate fechaCosecha) {
+    public void setFechaCosecha(Date fechaCosecha) {
         this.fechaCosecha = fechaCosecha;
     }
 
-    public BigDecimal getAreaHectareas() {
+    public float getAreaHectareas() {
         return areaHectareas;
     }
 
-    public void setAreaHectareas(BigDecimal areaHectareas) {
+    public void setAreaHectareas(float areaHectareas) {
         this.areaHectareas = areaHectareas;
     }
 
