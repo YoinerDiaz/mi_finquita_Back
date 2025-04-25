@@ -13,18 +13,18 @@ public class TrabajoInsumo {
     @Column(name = "cantidad")
     private int cantidad;
 
-    @Column(name = "costo_unitario")
+    @Column(name = "costoUnitario")
     private float costoUnitario;
 
 
     // Relación con Trabajo
     @ManyToOne
-    @JoinColumn(name = "trabajo_id")
+    @JoinColumn(name = "id_trabajo")
     private Trabajo trabajo;
 
     // Relación con Insumo
     @ManyToOne
-    @JoinColumn(name = "insumo_id")
+    @JoinColumn(name = "id_insumo")
     private Insumo insumo;
 
     // Constructor vacío
