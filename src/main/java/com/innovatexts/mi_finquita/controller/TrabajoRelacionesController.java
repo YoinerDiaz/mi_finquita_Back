@@ -45,7 +45,7 @@ public class TrabajoRelacionesController {
 
     // ========== POST: Insertar en trabajo_cultivo ==========
     @PostMapping("/trabajo-cultivo")
-    public ResponseEntity<TrabajoCultivo> crearTrabajoCultivo(@RequestBody TrabajoCultivoDTO dto) {
+    public ResponseEntity<TrabajoCultivoDTO> crearTrabajoCultivo(@RequestBody TrabajoCultivoDTO dto) {
         // 1. Buscar Trabajo
         Trabajo trabajo = trabajoRepository.findById(dto.getTrabajoId())
             .orElseThrow(() -> new RuntimeException("Trabajo no encontrado con ID: " + dto.getTrabajoId()));
@@ -62,8 +62,13 @@ public class TrabajoRelacionesController {
         // 4. Guardar en la BD
         trabajoCultivoRepository.save(trabajoCultivo);
 
+        TrabajoCultivoDTO responseDTO = new TrabajoCultivoDTO(
+        trabajo.getDetalles(),
+        cultivo.getNombre()
+    );
+        
         // 5. Retornar respuesta
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(responseDTO);
     }
 
     // ========== POST: Insertar en trabajo_insumo ==========

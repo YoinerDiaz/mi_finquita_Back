@@ -88,6 +88,12 @@ public class CultivoController {
         }
     }
 
+    @GetMapping("/total-registros")
+    public ResponseEntity<Long> obtenerTotalRegistros() {
+        long total = cultivoService.obtenerTotalRegistros();
+        return ResponseEntity.ok(total);
+    }
+
     // ========== MÉTODOS DE CONVERSIÓN ==========
 
     private CultivoDTO convertEntityToDTO(Cultivo cultivo) {

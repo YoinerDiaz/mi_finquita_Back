@@ -14,6 +14,10 @@ public class CultivoService {
     @Autowired
     private CultivoRepository cultivoRepository;
 
+    public long obtenerTotalRegistros() {
+        return cultivoRepository.contarRegistros();
+    }
+
     // Guardar un cultivo
     public Cultivo guardarCultivo(Cultivo cultivo) {
         return cultivoRepository.save(cultivo);
